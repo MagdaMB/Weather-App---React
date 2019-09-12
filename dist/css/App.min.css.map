@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,IAAI,AAAC,CACD,OAAO,CAAE,IAAI,CACb,MAAM,CAAE,aAAa,CACrB,SAAS,CAAE,GAAG,CACd,MAAM,CAAE,MAAM,CACd,UAAU,CAAE,MAAM,CACrB",
+    "sources": [
+        "../../src/components/App.scss",
+        "../../src/components/Form/Form.scss",
+        "../../src/components/Result/Result.scss"
+    ],
+    "names": [],
+    "file": "App.min.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,OADG,CACH,GAAG,AAAC,CACA,OAAO,CAAE,IAAI,CAChB",
+    "sources": [
+        "../../src/components/Result/Result.scss"
+    ],
+    "names": [],
+    "file": "Result.min.css"
+}
