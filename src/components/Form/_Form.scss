@@ -1,0 +1,19 @@
+form {
+    padding: 20px 10px;
+
+    input {
+        padding: 10px;
+    }
+
+    button {
+        margin-left: 10px;
+        padding: 10px;
+
+        &:hover {
+            color: #fff;
+            background: #000;
+            cursor: pointer;
+            border-color: black;
+        }
+    }
+}

@@ -25,49 +25,85 @@ class App extends Component {
     });
   };
 
-  handleCitySubmit = e => {
-    e.preventDefault();
+  // handleCitySubmit = e => {
+  //   e.preventDefault();
 
-    const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=${userId}&units=metric`;
+  //   const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=${userId}&units=metric`;
 
-    fetch(API)
-      .then(response => {
-        if (response.ok) {
-          return response;
-        }
-        throw Error("nie udało się");
-      })
-      .then(response => response.json())
-      .then(result => {
-        const time = new Date().toLocaleString();
+  //   fetch(API)
+  //     .then(response => {
+  //       if (response.ok) {
+  //         return response;
+  //       }
+  //       throw Error("nie udało się");
+  //     })
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       const time = new Date().toLocaleString();
 
-        this.setState(prevState => ({
-          err: false,
-          date: time,
-          city: this.state.value,
-          sunrise: result.sys.sunrise,
-          sunset: result.sys.sunset,
-          temp: result.main.temp,
-          pressure: result.main.pressure,
-          wind: result.wind.speed
-        }));
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState(state => ({
-          err: true,
-          city: this.state.value
-        }));
-      });
-  };
+  //       this.setState(prevState => ({
+  //         err: false,
+  //         date: time,
+  //         city: this.state.value,
+  //         sunrise: result.sys.sunrise,
+  //         sunset: result.sys.sunset,
+  //         temp: result.main.temp,
+  //         pressure: result.main.pressure,
+  //         wind: result.wind.speed
+  //       }));
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //       this.setState(state => ({
+  //         err: true,
+  //         city: state.value
+  //       }));
+  //     });
+  // };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.value.length === 0) return;
+    if (prevState.value !== this.state.value) {
+      const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=${userId}&units=metric`;
+
+      fetch(API)
+        .then(response => {
+          if (response.ok) {
+            return response;
+          }
+          throw Error("nie udało się");
+        })
+        .then(response => response.json())
+        .then(result => {
+          const time = new Date().toLocaleString();
+
+          this.setState(prevState => ({
+            err: false,
+            date: time,
+            city: this.state.value,
+            sunrise: result.sys.sunrise,
+            sunset: result.sys.sunset,
+            temp: result.main.temp,
+            pressure: result.main.pressure,
+            wind: result.wind.speed
+          }));
+        })
+        .catch(err => {
+          console.log(err);
+          this.setState(state => ({
+            err: true,
+            city: state.value
+          }));
+        });
+    }
+  }
   render() {
     return (
       <div className="App">
         <Form
           value={this.state.value}
           change={this.handleInputChange}
-          submit={this.handleCitySubmit}
+          // submit={this.handleCitySubmit}
         />
         <Result weather={this.state} />
       </div>

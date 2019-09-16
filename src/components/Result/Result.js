@@ -12,26 +12,26 @@ const Result = props => {
     pressure,
     wind
   } = props.weather;
+
+  let content = null;
+
+  if (!error && city) {
+    const sunriseTime = new Date(sunrise * 1000).toLocaleTimeString();
+    const sunsetTime = new Date(sunset * 1000).toLocaleTimeString();
+    content = (
+      <div>
+        <div>{`Pogoda dla miasta: ${city}`}</div>
+        <div>{`Temperatura dla miasta: ${city} wynosi: ${temp}`}</div>
+        <div>{`Wschód Słońca jest o: ${sunriseTime}`}</div>
+        <div>{`Zachód Słońca jest o: ${sunsetTime}`}</div>
+        <div>{`Ciśnienie wynosi: ${pressure}`}</div>
+        <div>{`Wiatr: wynosi: ${wind}`}</div>
+        <div>{`Dane z dnia: ${date}`}</div>
+      </div>
+    );
+  }
   return (
-    <div className="Result">
-      <div>Pogoda dla miasta: {city}</div>
-      <div>
-        Temperatura dla miasta: {city} wynosi: {temp}
-      </div>
-      <div>
-        Wschód Słońcca dla miasta: {city} jest o: {sunrise}
-      </div>
-      <div>
-        Zachód Słońca dla miasta: {city} jest o: {sunset}
-      </div>
-      <div>
-        Ciśnienie dla miasta: {city} wynosi: {pressure}
-      </div>
-      <div>
-        Wiatr dla miasta: {city} wynosi: {wind}
-      </div>
-      <div>Dane z dnia: {date}</div>
-    </div>
+    <div className="Result">{error ? `nie mamy w bazie ${city}` : content}</div>
   );
 };
 

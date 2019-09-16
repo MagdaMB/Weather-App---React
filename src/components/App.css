@@ -11,17 +11,23 @@ form button {
   padding: 10px;
 }
 
+form button:hover {
+  color: #fff;
+  background: #000;
+  cursor: pointer;
+  border-color: black;
+}
+
 .Result div {
-  color: #000;
+  color: red;
   padding: 5px;
 }
 
 .App {
   padding: 20px;
-  border: 1px solid red;
+  border: 2px solid red;
   max-width: 50%;
-  margin: 0 auto;
+  margin: 20px auto;
   text-align: center;
 }
-
 /*# sourceMappingURL=App.css.map */

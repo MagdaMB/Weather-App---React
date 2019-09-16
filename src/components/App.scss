@@ -1,11 +1,10 @@
 @import "./Form/Form.scss";
 @import "./Result/Result.scss";
-@import "./variables.scss";
 
 .App {
     padding: 20px;
-    border: 1px solid red;
+    border: 2px solid red;
     max-width: 50%;
-    margin: 0 auto;
+    margin: 20px auto;
     text-align: center;
 }
